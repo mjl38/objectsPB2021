@@ -4,13 +4,9 @@ global type w_principal from window
 end type
 type mdi_1 from mdiclient within w_principal
 end type
-type st_2 from statictext within w_principal
-end type
 type st_1 from statictext within w_principal
 end type
 type cbx_exclude_dw from checkbox within w_principal
-end type
-type st_match_example from statictext within w_principal
 end type
 type cb_buscar from commandbutton within w_principal
 end type
@@ -40,8 +36,6 @@ type cb_exportar2 from commandbutton within w_principal
 end type
 type cb_localizar from commandbutton within w_principal
 end type
-type cb_match from commandbutton within w_principal
-end type
 type sle_objeto2 from singlelineedit within w_principal
 end type
 type cbx_mayus_minus from checkbox within w_principal
@@ -66,10 +60,8 @@ boolean maxbox = true
 windowtype windowtype = mdihelp!
 long backcolor = 81324524
 mdi_1 mdi_1
-st_2 st_2
 st_1 st_1
 cbx_exclude_dw cbx_exclude_dw
-st_match_example st_match_example
 cb_buscar cb_buscar
 cbx_include_dw cbx_include_dw
 cb_borrar_repts cb_borrar_repts
@@ -84,7 +76,6 @@ cb_mostrar_todos cb_mostrar_todos
 cb_repts cb_repts
 cb_exportar2 cb_exportar2
 cb_localizar cb_localizar
-cb_match cb_match
 sle_objeto2 sle_objeto2
 cbx_mayus_minus cbx_mayus_minus
 rte_find rte_find
@@ -301,10 +292,8 @@ end function
 on w_principal.create
 if this.MenuName = "m_dummy" then this.MenuID = create m_dummy
 this.mdi_1=create mdi_1
-this.st_2=create st_2
 this.st_1=create st_1
 this.cbx_exclude_dw=create cbx_exclude_dw
-this.st_match_example=create st_match_example
 this.cb_buscar=create cb_buscar
 this.cbx_include_dw=create cbx_include_dw
 this.cb_borrar_repts=create cb_borrar_repts
@@ -319,17 +308,14 @@ this.cb_mostrar_todos=create cb_mostrar_todos
 this.cb_repts=create cb_repts
 this.cb_exportar2=create cb_exportar2
 this.cb_localizar=create cb_localizar
-this.cb_match=create cb_match
 this.sle_objeto2=create sle_objeto2
 this.cbx_mayus_minus=create cbx_mayus_minus
 this.rte_find=create rte_find
 this.dw_obj=create dw_obj
 this.gb_busquedas=create gb_busquedas
 this.Control[]={this.mdi_1,&
-this.st_2,&
 this.st_1,&
 this.cbx_exclude_dw,&
-this.st_match_example,&
 this.cb_buscar,&
 this.cbx_include_dw,&
 this.cb_borrar_repts,&
@@ -344,7 +330,6 @@ this.cb_mostrar_todos,&
 this.cb_repts,&
 this.cb_exportar2,&
 this.cb_localizar,&
-this.cb_match,&
 this.sle_objeto2,&
 this.cbx_mayus_minus,&
 this.rte_find,&
@@ -355,10 +340,8 @@ end on
 on w_principal.destroy
 if IsValid(MenuID) then destroy(MenuID)
 destroy(this.mdi_1)
-destroy(this.st_2)
 destroy(this.st_1)
 destroy(this.cbx_exclude_dw)
-destroy(this.st_match_example)
 destroy(this.cb_buscar)
 destroy(this.cbx_include_dw)
 destroy(this.cb_borrar_repts)
@@ -373,7 +356,6 @@ destroy(this.cb_mostrar_todos)
 destroy(this.cb_repts)
 destroy(this.cb_exportar2)
 destroy(this.cb_localizar)
-destroy(this.cb_match)
 destroy(this.sle_objeto2)
 destroy(this.cbx_mayus_minus)
 destroy(this.rte_find)
@@ -403,24 +385,6 @@ end event
 
 type mdi_1 from mdiclient within w_principal
 long BackColor=268435456
-end type
-
-type st_2 from statictext within w_principal
-integer x = 2907
-integer y = 2044
-integer width = 2368
-integer height = 64
-integer textsize = -10
-integer weight = 400
-fontcharset fontcharset = ansi!
-fontpitch fontpitch = variable!
-fontfamily fontfamily = swiss!
-string facename = "Tahoma"
-boolean underline = true
-long textcolor = 8388608
-long backcolor = 67108864
-string text = "Use to specify the 2nd value for ~"Find Occurrences~" or for the value for the ~"Match~" button"
-boolean focusrectangle = false
 end type
 
 type st_1 from statictext within w_principal
@@ -480,35 +444,6 @@ dw_obj.setsort("idx_lib, tipo, objeto")
 dw_obj.sort()
 
 setmicrohelp("Objects shown: " + string(dw_obj.rowcount(), '#,##0'))
-
-end event
-
-type st_match_example from statictext within w_principal
-integer x = 4617
-integer y = 2236
-integer width = 1161
-integer height = 180
-integer textsize = -8
-integer weight = 400
-fontcharset fontcharset = ansi!
-fontpitch fontpitch = variable!
-fontfamily fontfamily = swiss!
-string facename = "Tahoma"
-string pointer = "HyperLink!"
-long textcolor = 33554432
-long backcolor = 65535
-string text = "~"abc@123@xyz~" means: search for ~"abc~" on the left, then ~"123~" somewhere in the middle followed by ~"xyz~" on the right."
-boolean border = true
-long bordercolor = 12632256
-boolean focusrectangle = false
-end type
-
-event clicked;string ls_restore 
-ls_restore = ::clipboard()
-
-sle_objeto.text = "abc@123@xyz"
-
-::clipboard(ls_restore)
 
 end event
 
@@ -1291,128 +1226,10 @@ end event
 event constructor;this.enabled = false
 end event
 
-type cb_match from commandbutton within w_principal
-integer x = 4617
-integer y = 2112
-integer width = 581
-integer height = 112
-integer taborder = 150
-boolean bringtotop = true
-integer textsize = -10
-integer weight = 400
-fontpitch fontpitch = variable!
-fontfamily fontfamily = swiss!
-string facename = "Tahoma"
-string text = "Match"
-end type
-
-event clicked;string ls_cadena, ls_codigo, ls_left, ls_mid, ls_right, ls_sub, ls_copy2dw
-long ll_max, ll_i
-boolean lb_wholeword, lb_encontrado
-long ll_pos1, ll_pos2
-
-ls_cadena = sle_objeto2.text
-if cbx_mayus_minus.checked then
-	ls_cadena = lower(ls_cadena)
-end if
-
-if not Len(ls_cadena) > 0 then
-	MessageBox("Information", "You have to specify a search string with at least 1 '@' in it.~r~nUse the box with the yellow background to set the value.")
-	return
-end if
-ll_pos1 = pos(ls_cadena, "@")
-ll_pos2 = lastpos(ls_cadena, "@")
-ls_left = mid(ls_cadena, 1, ll_pos1 - 1)
-ls_mid = mid(ls_cadena, ll_pos1 + 1, ll_pos2 - ll_pos1 - 1)
-ls_right = mid(ls_cadena, ll_pos2 +1)
-
-dw_obj.setredraw(false)
-dw_obj.post setredraw(true)
-dw_obj.reset()
-
-setpointer(hourglass!)
-ll_max = upperBound(is_codigo)
-for ll_i = 1 to ll_max
-	if cbx_mayus_minus.checked then
-		ls_codigo = lower(is_codigo[ll_i])
-	else
-		ls_codigo = is_codigo[ll_i]
-	end if
-	
-	lb_encontrado = false
-	ll_pos1 = 0; ll_pos2 = 0; ls_sub = ""; ls_copy2dw = ""
-	ll_pos1 = pos(ls_codigo, ls_left, 1)
-	do while ll_pos1 > 0
-		ll_pos2 = pos(ls_codigo, ls_right, ll_pos1 + 1)
-		if ll_pos2 > ll_pos1 then
-			ls_sub = mid(ls_codigo, ll_pos1 + len(ls_left), ll_pos2 - ll_pos1 - len(ls_left) )
-			if pos(ls_sub, ls_mid ) > 0 then
-				// found!
-				lb_encontrado = true
-				ls_copy2dw += (" || " + ls_sub)
-//				exit
-			end if
-		else
-			exit
-		end if
-		ll_pos1 = pos(ls_codigo, ls_left, ll_pos2 + len(ls_right))
-	loop
-	
-//	lb_encontrado = Match(ls_codigo, ls_cadena)
-//	if lb_encontrado then
-////		// ver si quieren palabra exacta o subcadena:
-////		if cbx_exacta.checked then
-////			lb_wholeword = true
-////		else
-////			lb_wholeword = false
-////		end if
-////		
-////		rte_find.SelectTextAll()
-////		rte_find.ReplaceText(ls_codigo)
-//		
-////		if lb_encontrado then
-//
-//			// ver si hay que buscar segunda occurrencia
-//			if Len(ls_cadena2) > 0 and trim(ls_cadena2) <> '' then 
-//				lb_encontrado = Match(ls_codigo, ls_cadena2)
-////				if lb_encontrado then // encontrado
-////					// buscar segunda occurrencia
-////					if rte_find.find(ls_cadena2, true, false, lb_wholeword, false) > 0 then
-////						// enctonces encontrado
-////						lb_encontrado = true
-////					end if
-////				end if
-////			else
-////				// encontrado primera y unica occurrencia buscada
-////				lb_encontrado = true
-//			end if
-			
-			//TODO: habría que ver también como sacar el texto encontrado, el find devuelve sólo cantidad de carácteres encontrado
-			if lb_encontrado then
-				if ids_objetos.rowscopy(ll_i, ll_i, primary!, dw_obj, dw_obj.rowcount() + 1, primary!) = -1 then
-					MessageBox("error from cb_match", "Could not copy the row to dw_obj")
-				else
-					// set found substr as found text in comentario field:
-					dw_obj.SetItem(dw_obj.rowcount(), 'comentario', ls_copy2dw)
-				end if
-//			end if
-//			
-//		end if
-	end if
-	
-next
-setpointer(arrow!)
-setmicrohelp("Found objects: " + string(dw_obj.rowcount(), '#,##0') )
-
-end event
-
-event constructor;//this.enabled = false
-end event
-
 type sle_objeto2 from singlelineedit within w_principal
 integer x = 2907
 integer y = 2112
-integer width = 1691
+integer width = 1993
 integer height = 112
 integer taborder = 130
 boolean bringtotop = true
@@ -1422,7 +1239,6 @@ fontpitch fontpitch = variable!
 fontfamily fontfamily = swiss!
 string facename = "Tahoma"
 long textcolor = 33554432
-long backcolor = 65535
 borderstyle borderstyle = stylelowered!
 end type
 
