@@ -5,10 +5,10 @@ COM:Miguel Leeuwe
 DES:Find objects, search by one or two strings,  list repeated objects, automatic deletion of repeated datawindows and comparison of 2 versions of an application
 CPY:(MIT) You can use it freely
 PRD:Objetos Powerbuilder pb2012
-PVS:2021.0.0.0
-PVN:2021,0,0,0
-FVS:2021.0.0.0
-FVN:2021,0,0,0
+PVS:2021.1.0.0
+PVN:2021,1,0,0
+FVS:2021.1.0.0
+FVN:2021,1,0,0
 MAN:0,asInvoker,0
 PBD:objetosv11.pbl,,1
 OBJ:D:\PB_code\pb2021\Test\OBJETOS pb2021\objetosv11.pbl,ds_objetos,d
