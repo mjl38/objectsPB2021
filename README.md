@@ -15,3 +15,5 @@ The application depends on the use of any external file comparison tool which al
 - [ ] Use automatic radio buttons for the 2 datawindow checkboxes, they don't work well if you select both (as explained in the video).
 - [ ] Translate all the code comments to English (right now in Spanish).
 - [ ] Record the video again, once the most important changes have been done.
+***
+For any questions you can contact me right here on github by creating a Discussion / Issue or right here: [Contact](https://www.pb.miguell.work/contact)
