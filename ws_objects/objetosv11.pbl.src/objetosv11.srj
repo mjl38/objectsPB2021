@@ -4,7 +4,7 @@ CMP:0,0,0,2,0,0,0
 COM:Miguel Leeuwe
 DES:Find objects, search by one or two strings,  list repeated objects, automatic deletion of repeated datawindows and comparison of 2 versions of an application
 CPY:(MIT) You can use it freely
-PRD:Objetos Powerbuilder pb2012
+PRD:Objetos Powerbuilder pb2021
 PVS:2021.1.0.0
 PVN:2021,1,0,0
 FVS:2021.1.0.0
