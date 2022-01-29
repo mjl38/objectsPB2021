@@ -12,3 +12,4 @@ The application depends on the use of any external file comparison tool which al
 - [ ] Make the window resizable
 - [ ] Instead of using temp1.txt and temp2.txt, use filenames that include the objectname.
 - [ ] Show the name of the Exported Libs I and II somewhere on the window.
+- [ ] Translate all the code comments to English (right now in Spanish).
